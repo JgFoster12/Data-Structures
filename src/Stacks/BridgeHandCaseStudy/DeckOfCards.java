@@ -20,7 +20,7 @@ public class DeckOfCards<T>{
     private enum RANK{
         TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACKS, QUEENS, KINGS, ACE, //enum of ranks
     }
-git i
+
     public DeckOfCards(){ //initialize stack of cards by invoking constructor
         deckOfCards = new Stack<>();
         initDeck(); //call function to push each card onto the stack, initializing the deck of cards
