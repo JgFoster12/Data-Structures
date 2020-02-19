@@ -53,11 +53,11 @@ public class DeckOfCards<T>{
                 } else if (!shuffledDeck.isEmpty()) { // If number is odd push card onto the temporary stack
                     temp = unshuffledDeck.pop(); //store card in temp variable; pops card from the argument
                     tempDeck.push(temp); //pushes card onto temporary stack
-                    tempDeckCounter++; // increment the size of temporary stacks for preceding while loop to push these card onto the returned stack
+//                    tempDeckCounter++; // increment the size of temporary stacks for preceding while loop to push these card onto the returned stack
                 }
             }
 
-            while (unshuffledDeck.size() < tempDeckCounter && !tempDeck.isEmpty()) { //assign remaining cards onto shuffledDeck
+            while (!tempDeck.isEmpty()) { //assign remaining cards onto shuffledDeck
                 temp = tempDeck.pop(); //store temp card
                 shuffledDeck.push(temp); // push temp card onto final stack
             }
