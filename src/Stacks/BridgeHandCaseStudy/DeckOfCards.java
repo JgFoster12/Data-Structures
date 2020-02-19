@@ -41,7 +41,8 @@ public class DeckOfCards<T>{
         SecureRandom rand = new SecureRandom(); // Secure random number generator
         Card temp; // temporary card used to push onto respective stack
         int random; // random int
-       
+        int tempDeckCounter = 0; //used to store the amount of remaining cards are to be pushed from tempDeck to shuffledDeck
+
         if(!unshuffledDeck.isEmpty()) {//pre condition that the stack must not be empty
             for (int i = 0; i < 52; i++) { // loop through 52 times
                 random = rand.nextInt(17) + 1; //generate random number from 1 - 17
@@ -49,18 +50,20 @@ public class DeckOfCards<T>{
                     temp = unshuffledDeck.pop(); //store card in temp variable and pop card from top of the stack
                     shuffledDeck.push(temp); //push stack on the top of shuffled deck
 
-                } else if (!shuffledDeck.isEmpty()) { // If number is odd push card onto the temporary stack
+                } else{ // If number is odd push card onto the temporary stack
                     temp = unshuffledDeck.pop(); //store card in temp variable; pops card from the argument
                     tempDeck.push(temp); //pushes card onto temporary stack
+                    tempDeckCounter++; // increment the size of temporary stacks for preceding while loop to push these card onto the returned stack
 
+                    if(tempDeckCounter > 0 && !tempDeck.isEmpty()){
+                        temp= tempDeck.pop();
+                        shuffledDeck.push(temp);
+                        tempDeckCounter--;
+                    }
                 }
             }
 
-            while (!tempDeck.isEmpty()) { //assign remaining cards onto shuffledDeck
-                temp = tempDeck.pop(); //store temp card
-                shuffledDeck.push(temp); // push temp card onto final stack
-            }
-        } else throw new StackUnderflowException("You tried to shuffle a deck that is empty!");
+           } else throw new StackUnderflowException("You tried to shuffle a deck that is empty!");
 
         return shuffledDeck; //returns shuffled deck of cards
     }
