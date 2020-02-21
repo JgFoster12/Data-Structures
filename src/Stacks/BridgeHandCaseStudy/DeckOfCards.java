@@ -50,18 +50,20 @@ public class DeckOfCards<T>{
                     temp = unshuffledDeck.pop(); //store card in temp variable and pop card from top of the stack
                     shuffledDeck.push(temp); //push stack on the top of shuffled deck
 
-                } else if (!shuffledDeck.isEmpty()) { // If number is odd push card onto the temporary stack
+                } else{ // If number is odd push card onto the temporary stack
                     temp = unshuffledDeck.pop(); //store card in temp variable; pops card from the argument
                     tempDeck.push(temp); //pushes card onto temporary stack
                     tempDeckCounter++; // increment the size of temporary stacks for preceding while loop to push these card onto the returned stack
+
+                    if(tempDeckCounter > 0 && !tempDeck.isEmpty()){
+                        temp= tempDeck.pop();
+                        shuffledDeck.push(temp);
+                        tempDeckCounter--;
+                    }
                 }
             }
 
-            while (unshuffledDeck.size() < tempDeckCounter && !tempDeck.isEmpty()) { //assign remaining cards onto shuffledDeck
-                temp = tempDeck.pop(); //store temp card
-                shuffledDeck.push(temp); // push temp card onto final stack
-            }
-        } else throw new StackUnderflowException("You tried to shuffle a deck that is empty!");
+           } else throw new StackUnderflowException("You tried to shuffle a deck that is empty!");
 
         return shuffledDeck; //returns shuffled deck of cards
     }
