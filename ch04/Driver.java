@@ -21,14 +21,6 @@ public class Driver {
         choice = scanner.nextInt();
 
         while(true){
-            System.out.println("Choose an operation to perform.\n......." +
-                    "\n1: enqueue(element)" +
-                    "\n2: String dequeue()" +
-                    "\n3: boolean isFull()" +
-                    "\n4: boolean isEmpty()"+
-                    "\n5: int size()"       +
-                    "\n6: Quit testing"
-            );
 
             switch(choice){
                 case 1:
