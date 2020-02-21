@@ -57,7 +57,9 @@ public class Driver {
                 System.out.println(q.size());
                 break;
             case 2:
-                System.out.println("Dequeued: " + q.dequeue());
+                if(q.isEmpty()) System.out.println("Queue Underflow Exception");
+                else
+                    System.out.println("Dequeued: " + q.dequeue());
                 break;
             case 3:
                 System.out.println(q.isFull());
